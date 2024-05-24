@@ -1,25 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { ContactPage} from './ContactPage';
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom';
+import { ThankYouPage } from './ThankYouPage';
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Navigate to="contact" />
+  },
+  {
+    path: "/contact",
+    element: <ContactPage />,
+  },
+  {
+    path: "/thank-you/:name",
+    element: <ThankYouPage />
+  },
+])
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <RouterProvider router={router} />
   );
 }
 
